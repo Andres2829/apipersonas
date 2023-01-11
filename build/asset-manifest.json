@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/apipersonas/build/static/css/main.073c9b0a.css",
+    "main.js": "/apipersonas/build/static/js/main.e185fd6d.js",
+    "static/js/787.d90e0f4a.chunk.js": "/apipersonas/build/static/js/787.d90e0f4a.chunk.js",
+    "index.html": "/apipersonas/build/index.html",
+    "main.073c9b0a.css.map": "/apipersonas/build/static/css/main.073c9b0a.css.map",
+    "main.e185fd6d.js.map": "/apipersonas/build/static/js/main.e185fd6d.js.map",
+    "787.d90e0f4a.chunk.js.map": "/apipersonas/build/static/js/787.d90e0f4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.e185fd6d.js"
+  ]
+}
