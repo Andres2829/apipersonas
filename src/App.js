@@ -7,7 +7,16 @@ import {makeStyles} from '@material-ui/core/styles'
 import { Edit, Delete, VisibilityOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import { styled } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import {useHistory} from "react-router";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+
 
 
 const baseUrl='https://apidijangoenersinc.onrender.com/api/personas/'
@@ -26,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   table: {
-    position: 'absolute',
-    width: 1400,
+    position: 'relative ',
+    width: 1200,
     height:200,
     background: 'linear-gradient(45deg, #6b8bfe 30%, #FF8E53 90%)',
     color: 'white',
@@ -35,15 +44,13 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     border: 0,
     padding: theme.spacing(2, 4, 3),
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
+    top: '50%',
+    left: '10%',
   },
 
   body: {
     textAlign:'center',
-    backgroundColor:'#6b8bfe',
-    
+    background: 'linear-gradient(to right, #373b44, #4286f4)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   },
 
 
@@ -57,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MyButton = styled(Button)({
+  position: 'relative ',
   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   border: 0,
   borderRadius: 3,
@@ -117,7 +125,11 @@ function App() {
     .then(response=>{
       setPersonas(personas.concat(response.data))
       abrirCerrarModalInsertar()
+      ///Refresca la vista al crera persona
+      return peticionGet();
     })
+    
+    
   }
 
 
@@ -175,16 +187,6 @@ function App() {
     setPersonaSeleccionada(persona);
     (caso==='Ver')?abrirCerrarModalVer():abrirCerrarModalEliminar()
   }
-
-
-
-
-
-
-
-
-
-
 
   useEffect(()=>{
      peticionGet();
@@ -274,15 +276,16 @@ function App() {
   return (
 
     
-
-
-
     <div className={styles.body}>
-      <br/>
-      <h3>Prueba proceso de Selección Desarrollador Full Stack</h3>
-      <h4>API Personas</h4>
+      <Container fluid="sm, md, lg, xl, xxl">
+      <Row>
+        <Col>
+        <br/>
+      <h3 style={{ color: 'orange' }}>Prueba proceso de Selección Desarrollador Full Stack</h3>
+      <h4 style={{ color: 'white' }}>API Personas</h4>
       <MyButton  onClick={()=>abrirCerrarModalInsertar()}>Insertar</MyButton>
-      <TableContainer component={Paper}>
+      <TableContainer>
+      <br/>
         <Table className={styles.table}>
           <TableHead>
             <TableRow >
@@ -341,49 +344,8 @@ function App() {
      onClose={abrirCerrarModalEliminar}>
         {bodyEliminar}
      </Modal>
-
      <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <h3>Realizado por: Andrés Cabrera</h3>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
+     <h3 style={{ color: 'white' }}>Realizado por: Andrés Cabrera</h3>
      <br/>
      <br/>
      <br/>
@@ -398,12 +360,17 @@ function App() {
      <br/>
      <br/>
      
-
-    
      
 
-     
+
+
+
+        </Col>
+      </Row>
       
+
+      </Container>
+
       
     </div>
   );
